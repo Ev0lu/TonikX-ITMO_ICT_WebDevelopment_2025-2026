@@ -1,6 +1,5 @@
 site_name: Lr Docs
 site_url: https://Ev0lu.github.io/TonikX-ITMO_ICT_WebDevelopment_2025-2026/
-docs_dir: ./docs
 theme:
   name: material
 nav:
