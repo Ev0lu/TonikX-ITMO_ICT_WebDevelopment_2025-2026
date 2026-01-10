@@ -762,6 +762,88 @@ python manage.py migrate
 - Шаблоны: <code>templates/</code> и <code>templates/project_first_app/</code></p>
 <p><strong>Скриншот административной панели</strong>:</p>
 <p><img alt="Административная панель Django" src="../lr2_screen/image.png" /></p>
+<p>Проект</p>
+<h1 id="2">Лабораторная работа 2 — Доска домашних заданий</h1>
+<h2 id="_1">Краткое описание</h2>
+<p>Веб-приложение на Django для управления домашними заданиями: преподаватель создает задания и просматривает сдачи, студенты сдают работы и видят оценки. Интерфейс на Bootstrap, база данных PostgreSQL.</p>
+<p><img alt="Внешний вид" src="../lr2_screen/image2.png" /></p>
+<h2 id="_2">Технологии</h2>
+<ul>
+<li>Python 3.13, Django 6.0</li>
+<li>PostgreSQL (по умолчанию <code>homework_db</code>, пользователь <code>postgres</code>, пароль <code>password</code>)</li>
+<li>psycopg2-binary, python-decouple</li>
+</ul>
+<h2 id="_3">Как запустить локально</h2>
+<ol>
+<li>Установить зависимости: <code>pip install -r requirements.txt</code></li>
+<li>Настроить БД PostgreSQL (или поменять настройки в <code>laboratory_work_2/settings.py</code> через переменные окружения: <code>DB_NAME</code>, <code>DB_USER</code>, <code>DB_PASSWORD</code>, <code>DB_HOST</code>, <code>DB_PORT</code>).</li>
+<li>Применить миграции: <code>python manage.py migrate</code></li>
+<li>Создать суперпользователя: <code>python manage.py createsuperuser</code></li>
+<li>Запустить сервер: <code>python manage.py runserver</code> и открыть <code>http://127.0.0.1:8000/</code></li>
+</ol>
+<h2 id="_4">Основные страницы</h2>
+<ul>
+<li><code>/register/</code>, <code>/login/</code>, <code>/logout/</code> — регистрация и вход.</li>
+<li><code>/homeworks/</code> — список заданий с поиском и фильтром по предмету.</li>
+<li><code>/homeworks/&lt;id&gt;/</code> — детали задания; студент может сдать работу, преподаватель видит все сдачи.</li>
+<li><code>/my-grades/</code> — оценки студента и статистика по сдачам.</li>
+<li><code>/class-grades/</code> — матрица оценок класса (только для преподавателя).</li>
+<li><code>/admin/</code> — управление предметами, заданиями и оценками.</li>
+</ul>
+<p><img alt="Внешний вид" src="../lr2_screen/image3.png" /></p>
+<h2 id="_5">Что реализовано</h2>
+<ul>
+<li>Модели: <code>Subject</code>, <code>Homework</code>, <code>StudentSubmission</code> (одна сдача на студента, флаг опоздания, оценки 2–5).</li>
+<li>Пагинация списков, поиск по названию/описанию/предмету.</li>
+<li>Подсветка просроченных заданий, отметка опоздавших сдач.</li>
+<li>Статистика по сдачам (всего, проверено, вовремя, с опозданием).</li>
+<li>Кастомные template-фильтры для словаря оценок и подсчета опозданий.</li>
+</ul>
+<h2 id="_6">Кратко об архитектуре</h2>
+<p>Стандартный MVT Django: модели в <code>projects/models.py</code>, представления в <code>projects/views.py</code>, шаблоны в <code>projects/templates/</code>, маршруты подключены через <code>laboratory_work_2/urls.py</code>. Статика Bootstrap, без дополнительного фронтенд-сборщика.</p>
+<p>СЦЕНАРИЙ 1: ОТ АДМИНИСТРАТОРА</p>
+<ol>
+<li>Открыть http://localhost:8000/admin/</li>
+<li>Авторизоваться (admin/password123)</li>
+<li>Перейти в "Предметы" → "Добавить"</li>
+<li>Заполнить форму:
+   Name: Математика</li>
+<li>Сохранить</li>
+<li>Перейти в "Домашние задания" → "Добавить"</li>
+<li>Заполнить:
+   Subject: Математика
+   Teacher: Admin
+   Title: Вычисление интегралов
+   Description: Вычислить 10 интегралов
+   Due date: 2025-01-20 23:59
+   Penalty info: 1 балл за день опоздания</li>
+<li>Сохранить</li>
+</ol>
+<p>СЦЕНАРИЙ 2: ОТ СТУДЕНТА</p>
+<ol>
+<li>Открыть http://localhost:8000/register/</li>
+<li>Зарегистрироваться:
+   Username: student1
+   Email: student@example.com
+   Password: pass123456</li>
+<li>Открыть http://localhost:8000/login/</li>
+<li>Авторизоваться</li>
+<li>Открыть http://localhost:8000/homeworks/</li>
+<li>Кликнуть на задание "Вычисление интегралов"</li>
+<li>Заполнить поле "Ваше решение"</li>
+<li>Нажать "Сдать работу"</li>
+<li>Открыть http://localhost:8000/my-grades/</li>
+<li>Увидеть свою сданную работу</li>
+</ol>
+<p>СЦЕНАРИЙ 3: ОЦЕНИВАНИЕ</p>
+<ol>
+<li>Открыть http://localhost:8000/admin/</li>
+<li>Перейти в "Сдачи домашних заданий"</li>
+<li>Выбрать сданную работу студента</li>
+<li>Установить Grade: 4</li>
+<li>Сохранить</li>
+<li>Студент увидит оценку на /my-grades/</li>
+</ol>
 
 
 
