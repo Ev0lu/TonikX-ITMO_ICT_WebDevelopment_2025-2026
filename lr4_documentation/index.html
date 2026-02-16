@@ -9,10 +9,6 @@
       
       
       
-        <link rel="prev" href="..">
-      
-      
-        <link rel="next" href="../ex2/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +16,7 @@
     
     
       
-        <title>Задание 1 (UDP эхо) - Лабораторная работа</title>
+        <title>Лабораторная работа 4 — Документация интерфейсов (Vue + бэкенд библиотеки) - Лабораторная работа</title>
       
     
     
@@ -62,7 +58,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1-udp" class="md-skip">
+        <a href="#4-vue" class="md-skip">
           Skip to content
         </a>
       
@@ -98,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Задание 1 (UDP эхо)
+              Лабораторная работа 4 — Документация интерфейсов (Vue + бэкенд библиотеки)
             
           </span>
         </div>
@@ -235,32 +231,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Задание 1 (UDP эхо)
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../ex1/" class="md-nav__link">
         
   
   
@@ -271,71 +245,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Цель
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#api" class="md-nav__link">
-    <span class="md-ellipsis">
-      Протокол и API
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      Файлы
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      Запуск
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      Важные нюансы
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -501,16 +410,16 @@
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Цель
+      Введение
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#api" class="md-nav__link">
+  <a href="#cors" class="md-nav__link">
     <span class="md-ellipsis">
-      Протокол и API
+      Настройка CORS на серверной части
     </span>
   </a>
   
@@ -519,7 +428,7 @@
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      Файлы
+      Утверждённый список интерфейсов
     </span>
   </a>
   
@@ -528,16 +437,49 @@
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      Запуск
+      Реализованные клиентские интерфейсы
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Реализованные клиентские интерфейсы">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Авторизация, регистрация и изменение учётных данных
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Основные экраны приложения
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vuetify" class="md-nav__link">
+    <span class="md-ellipsis">
+      Подключение Vuetify
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      Важные нюансы
+      Запуск и сборка
     </span>
   </a>
   
@@ -559,38 +501,63 @@
 
 
 
-<h1 id="1-udp">Задание 1 — UDP эхо</h1>
-<h2 id="_1">Цель</h2>
-<p>Освоить работу с UDP‑сокетами: отправка/приём датаграмм без установления соединения.</p>
-<h2 id="api">Протокол и API</h2>
+<h1 id="4-vue">Лабораторная работа 4 — Документация интерфейсов (Vue + бэкенд библиотеки)</h1>
+<h2 id="_1">Введение</h2>
+<p>В рамках лабораторной работы №4 реализован клиентский веб-интерфейс на <strong>Vue 3</strong> (Vite) с использованием <strong>Vuetify</strong> для взаимодействия с серверной частью лабораторной работы №3 (Django REST Framework). Взаимодействие с API выполняется через <strong>fetch</strong> (без axios). На бэкенде настроен <strong>CORS</strong> для запросов с фронтенда.</p>
+<hr />
+<h2 id="cors">Настройка CORS на серверной части</h2>
+<p>В проекте <strong>laboratory_work_3</strong> (Django) подключён пакет <code>django-cors-headers</code> и в <code>settings.py</code> задано:</p>
 <ul>
-<li>Адресное семейство: <code>AF_INET</code> (IPv4)</li>
-<li>Тип сокета: <code>SOCK_DGRAM</code> (UDP)</li>
-<li>Ключевые вызовы:</li>
-<li>Сервер: <code>socket()</code>, <code>bind()</code>, <code>recvfrom()</code>, <code>sendto()</code></li>
-<li>Клиент: <code>socket()</code>, <code>sendto()</code>, <code>recvfrom()</code></li>
+<li><strong>CORS_ALLOWED_ORIGINS</strong> — разрешённые источники запросов (например, <code>http://localhost:5173</code>, <code>http://127.0.0.1:5173</code> для Vite dev-сервера).</li>
+<li><strong>CORS_ALLOW_CREDENTIALS</strong> — <code>True</code> при необходимости отправки cookies/учётных данных.</li>
+<li>Middleware <strong>CorsMiddleware</strong> добавлен в начало списка MIDDLEWARE (перед <code>CommonMiddleware</code>).</li>
 </ul>
-<h2 id="_2">Файлы</h2>
-<ul>
-<li><code>Lr1/ex1/server.py</code></li>
-<li><code>Lr1/ex1/client.py</code></li>
-</ul>
-<h2 id="_3">Запуск</h2>
+<p>Таким образом, браузер разрешает кросс-доменные запросы с Vue-приложения к API Django в соответствии с практической работой 3.</p>
+<hr />
+<h2 id="_2">Утверждённый список интерфейсов</h2>
+<p>Список интерфейсов (эндпоинтов API) для предметной области «библиотека» утверждён и описан в документе <strong><a href="lr4_interfaces.md">lr4_interfaces.md</a></strong>. Кратко:</p>
 <ol>
-<li>Терминал 1:</li>
-<li><code>cd ...\Lr1\ex1</code></li>
-<li><code>python server.py</code></li>
-<li>Терминал 2:</li>
-<li><code>cd ...\Lr1\ex1</code></li>
-<li><code>python client.py</code></li>
+<li><strong>Авторизация и учётные данные</strong> — вход (<code>/auth/token/login/</code>), выход, текущий пользователь (<code>/auth/users/me/</code>), изменение учётных данных (PATCH <code>/auth/users/me/</code>), регистрация (POST <code>/auth/users/</code>).</li>
+<li><strong>Читальные залы</strong> — CRUD по <code>/api/reading-rooms/</code>.</li>
+<li><strong>Читатели</strong> — CRUD по <code>/api/readers/</code>, а также действия: книги читателя, старые закрепления, редкие книги, молодые читатели, статистика по образованию.</li>
+<li><strong>Книги</strong> — CRUD по <code>/api/books/</code>.</li>
+<li><strong>Экземпляры книг в залах</strong> — CRUD по <code>/api/book-copies/</code>.</li>
+<li><strong>Закрепления книг</strong> — CRUD по <code>/api/book-assignments/</code>, действие возврата книги.</li>
+<li><strong>Операции библиотекаря</strong> — регистрация читателя, исключение старых читателей, списание книги, приём книги, месячный отчёт.</li>
 </ol>
-<p>Ожидаемый результат: сервер выводит полученное сообщение и отвечает «Hello, client»; клиент печатает ответ.</p>
-<h2 id="_4">Важные нюансы</h2>
+<p>Все запросы к API (кроме логина/регистрации) выполняются с заголовком <code>Authorization: Token &lt;token&gt;</code>.</p>
+<hr />
+<h2 id="_3">Реализованные клиентские интерфейсы</h2>
+<h3 id="_4">Авторизация, регистрация и изменение учётных данных</h3>
 <ul>
-<li>UDP не устанавливает соединение; каждое сообщение — отдельная датаграмма, границы сообщений сохраняются.</li>
-<li>Сервер не должен закрывать сокет внутри цикла. Иначе следующая итерация <code>recvfrom()</code> вызовет ошибку наподобие <code>WinError 10038</code>.<br />
-  Решение: не закрывать сокет в цикле, либо завершать цикл (<code>break</code>) после одноразового ответа.</li>
+<li><strong>Вход (Login)</strong> — форма с полями «Имя пользователя» и «Пароль». POST на <code>/auth/token/login/</code>. Полученный токен сохраняется (например, в localStorage) и подставляется в заголовок <code>Authorization</code> при последующих запросах. При успехе выполняется переход на главную/дашборд.</li>
+<li><strong>Регистрация (Register)</strong> — форма с полями «Имя пользователя», «Пароль», «Повтор пароля». POST на <code>/auth/users/</code> с телом <code>{ username, password, re_password }</code>. После успешной регистрации пользователь может войти через форму входа.</li>
+<li><strong>Изменение учётных данных (Профиль)</strong> — экран «Профиль» / «Настройки» для авторизованного пользователя. GET <code>/auth/users/me/</code> для отображения текущих данных. PATCH <code>/auth/users/me/</code> для смены имени пользователя, email или пароля (при смене пароля передаётся <code>current_password</code> и при необходимости <code>new_password</code>; при использовании Djoser с повтором — <code>re_new_password</code>). Все запросы с заголовком <code>Authorization: Token &lt;token&gt;</code>.</li>
 </ul>
+<p>Взаимодействие с серверной частью настроено в соответствии с рекомендациями (Vue.js + Django REST Framework): хранение токена, передача его в заголовке, обработка 401 для перенаправления на страницу входа.</p>
+<h3 id="_5">Основные экраны приложения</h3>
+<ul>
+<li><strong>Главная (дашборд)</strong> — краткая статистика (количество книг, читателей, залов, активных закреплений), получаемая через API (например, агрегация по спискам или отдельный эндпоинт, если он есть).</li>
+<li><strong>Читальные залы</strong> — список залов (GET <code>/api/reading-rooms/</code>), создание/редактирование/удаление (POST/PATCH/PUT/DELETE), просмотр деталей зала.</li>
+<li><strong>Читатели</strong> — список (GET <code>/api/readers/</code>), фильтр по активности, создание/редактирование читателя, просмотр деталей; отдельно — «Книги читателя» (GET <code>/api/readers/{id}/books/</code>).</li>
+<li><strong>Книги</strong> — список (GET <code>/api/books/</code>), создание/редактирование/удаление (списание), просмотр деталей; при необходимости — связь с экземплярами в залах (<code>/api/book-copies/</code>).</li>
+<li><strong>Закрепления</strong> — список закреплений (GET <code>/api/book-assignments/</code>), фильтр по возвращённым/не возвращённым, создание закрепления, возврат книги (POST <code>/api/book-assignments/{id}/return_book/</code>).</li>
+<li><strong>Операции библиотекаря</strong> — вызов операций: регистрация читателя, исключение старых читателей, списание книги, приём книги; просмотр месячного отчёта (GET <code>/api/librarian-operations/monthly_report/?month=...&amp;year=...</code>).</li>
+<li><strong>Запросы (отчёты)</strong> — экраны для: книги заданного читателя; читатели, взявшие книгу более месяца назад; читатели с редкими книгами; количество читателей младше 20 лет; статистика по образованию в процентах — на основе эндпоинтов из раздела «Читатели» в <a href="lr4_interfaces.md">lr4_interfaces.md</a>.</li>
+</ul>
+<p>Все запросы к API выполняются через <strong>fetch</strong> (единая обёртка в <code>shared/api</code> с подстановкой <code>Authorization: Token</code> и базового URL).</p>
+<hr />
+<h2 id="vuetify">Подключение Vuetify</h2>
+<p>В проекте <strong>laboratory_work_4</strong> подключена библиотека <strong>Vuetify</strong> (в соответствии с п. 3.1 практической работы 4.2). Используются компоненты Vuetify для форм (v-text-field, v-form, v-btn), таблиц (v-data-table), карточек (v-card), навигации (v-app-bar, v-navigation-drawer), уведомлений (v-snackbar/v-alert) и т.д. Тема и иконки (например, mdi) настроены в плагине Vuetify в <code>main.ts</code> (или в отдельном файле конфигурации плагинов).</p>
+<hr />
+<h2 id="_6">Запуск и сборка</h2>
+<ul>
+<li><strong>Бэкенд (laboratory_work_3):</strong><br />
+<code>python manage.py runserver</code> (по умолчанию порт 8000). Убедиться, что в <code>CORS_ALLOWED_ORIGINS</code> указан адрес фронтенда (например, <code>http://localhost:5173</code>).</li>
+<li><strong>Фронтенд (laboratory_work_4):</strong><br />
+<code>npm run dev</code> — запуск dev-сервера Vite (обычно порт 5173). В <code>.env</code> или в коде задаётся переменная окружения с базовым URL API (например, <code>VITE_API_BASE_URL=http://localhost:8000</code>).</li>
+</ul>
+<p>После запуска обоих частей авторизация, регистрация, изменение учётных данных и все перечисленные интерфейсы работают через утверждённый список API, описанный в <a href="lr4_interfaces.md">lr4_interfaces.md</a>.</p>
 
 
 
