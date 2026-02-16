@@ -428,15 +428,6 @@
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      Утверждённый список интерфейсов
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
       Реализованные клиентские интерфейсы
     </span>
   </a>
@@ -445,7 +436,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       Авторизация, регистрация и изменение учётных данных
     </span>
@@ -454,7 +445,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       Основные экраны приложения
     </span>
@@ -477,7 +468,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       Запуск и сборка
     </span>
@@ -514,8 +505,6 @@
 </ul>
 <p>Таким образом, браузер разрешает кросс-доменные запросы с Vue-приложения к API Django в соответствии с практической работой 3.</p>
 <hr />
-<h2 id="_2">Утверждённый список интерфейсов</h2>
-<p>Список интерфейсов (эндпоинтов API) для предметной области «библиотека» утверждён и описан в документе <strong><a href="lr4_interfaces.md">lr4_interfaces.md</a></strong>. Кратко:</p>
 <ol>
 <li><strong>Авторизация и учётные данные</strong> — вход (<code>/auth/token/login/</code>), выход, текущий пользователь (<code>/auth/users/me/</code>), изменение учётных данных (PATCH <code>/auth/users/me/</code>), регистрация (POST <code>/auth/users/</code>).</li>
 <li><strong>Читальные залы</strong> — CRUD по <code>/api/reading-rooms/</code>.</li>
@@ -527,15 +516,15 @@
 </ol>
 <p>Все запросы к API (кроме логина/регистрации) выполняются с заголовком <code>Authorization: Token &lt;token&gt;</code>.</p>
 <hr />
-<h2 id="_3">Реализованные клиентские интерфейсы</h2>
-<h3 id="_4">Авторизация, регистрация и изменение учётных данных</h3>
+<h2 id="_2">Реализованные клиентские интерфейсы</h2>
+<h3 id="_3">Авторизация, регистрация и изменение учётных данных</h3>
 <ul>
 <li><strong>Вход (Login)</strong> — форма с полями «Имя пользователя» и «Пароль». POST на <code>/auth/token/login/</code>. Полученный токен сохраняется (например, в localStorage) и подставляется в заголовок <code>Authorization</code> при последующих запросах. При успехе выполняется переход на главную/дашборд.</li>
 <li><strong>Регистрация (Register)</strong> — форма с полями «Имя пользователя», «Пароль», «Повтор пароля». POST на <code>/auth/users/</code> с телом <code>{ username, password, re_password }</code>. После успешной регистрации пользователь может войти через форму входа.</li>
 <li><strong>Изменение учётных данных (Профиль)</strong> — экран «Профиль» / «Настройки» для авторизованного пользователя. GET <code>/auth/users/me/</code> для отображения текущих данных. PATCH <code>/auth/users/me/</code> для смены имени пользователя, email или пароля (при смене пароля передаётся <code>current_password</code> и при необходимости <code>new_password</code>; при использовании Djoser с повтором — <code>re_new_password</code>). Все запросы с заголовком <code>Authorization: Token &lt;token&gt;</code>.</li>
 </ul>
 <p>Взаимодействие с серверной частью настроено в соответствии с рекомендациями (Vue.js + Django REST Framework): хранение токена, передача его в заголовке, обработка 401 для перенаправления на страницу входа.</p>
-<h3 id="_5">Основные экраны приложения</h3>
+<h3 id="_4">Основные экраны приложения</h3>
 <ul>
 <li><strong>Главная (дашборд)</strong> — краткая статистика (количество книг, читателей, залов, активных закреплений), получаемая через API (например, агрегация по спискам или отдельный эндпоинт, если он есть).</li>
 <li><strong>Читальные залы</strong> — список залов (GET <code>/api/reading-rooms/</code>), создание/редактирование/удаление (POST/PATCH/PUT/DELETE), просмотр деталей зала.</li>
@@ -550,7 +539,7 @@
 <h2 id="vuetify">Подключение Vuetify</h2>
 <p>В проекте <strong>laboratory_work_4</strong> подключена библиотека <strong>Vuetify</strong> (в соответствии с п. 3.1 практической работы 4.2). Используются компоненты Vuetify для форм (v-text-field, v-form, v-btn), таблиц (v-data-table), карточек (v-card), навигации (v-app-bar, v-navigation-drawer), уведомлений (v-snackbar/v-alert) и т.д. Тема и иконки (например, mdi) настроены в плагине Vuetify в <code>main.ts</code> (или в отдельном файле конфигурации плагинов).</p>
 <hr />
-<h2 id="_6">Запуск и сборка</h2>
+<h2 id="_5">Запуск и сборка</h2>
 <ul>
 <li><strong>Бэкенд (laboratory_work_3):</strong><br />
 <code>python manage.py runserver</code> (по умолчанию порт 8000). Убедиться, что в <code>CORS_ALLOWED_ORIGINS</code> указан адрес фронтенда (например, <code>http://localhost:5173</code>).</li>
