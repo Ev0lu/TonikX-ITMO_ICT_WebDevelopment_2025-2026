@@ -12,7 +12,17 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 from pathlib import Path
 import os
-from decouple import config
+
+# Optional dependency: python-decouple.
+# If it's not installed, fall back to environment variables via os.getenv.
+try:
+    from decouple import config as _config  # type: ignore
+except ImportError:  # pragma: no cover
+    def _config(key, default=None, cast=None):
+        value = os.getenv(key, default)
+        if cast and value is not None:
+            return cast(value)
+        return value
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -75,18 +85,31 @@ WSGI_APPLICATION = 'laboratory_work_2.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-# PostgreSQL конфигурация
-# Используйте переменные окружения для безопасности
-DATABASES = {
-    'default': {
-        'ENGINE': config('DB_ENGINE', default='django.db.backends.postgresql'),
-        'NAME': config('DB_NAME', default='homework_db'),
-        'USER': config('DB_USER', default='postgres'),
-        'PASSWORD': config('DB_PASSWORD', default='password'),
-        'HOST': config('DB_HOST', default='localhost'),
-        'PORT': config('DB_PORT', default='5432'),
+# Database
+#
+# Default is PostgreSQL, but for quick local runs you can enable SQLite:
+#   USE_SQLITE=1
+USE_SQLITE = str(_config('USE_SQLITE', default='0')).lower() in ('1', 'true', 'yes', 'y', 'on')
+
+if USE_SQLITE:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
+else:
+    # PostgreSQL configuration via environment variables (or .env when python-decouple is installed)
+    DATABASES = {
+        'default': {
+            'ENGINE': _config('DB_ENGINE', default='django.db.backends.postgresql'),
+            'NAME': _config('DB_NAME', default='homework_db'),
+            'USER': _config('DB_USER', default='postgres'),
+            'PASSWORD': _config('DB_PASSWORD', default='password'),
+            'HOST': _config('DB_HOST', default='localhost'),
+            'PORT': _config('DB_PORT', default='5432'),
+        }
+    }
 
 
 # Password validation

@@ -198,7 +198,7 @@ def my_class_grades(request):
         students_grades[submission.student][submission.homework] = submission
     
     # Пагинация
-    paginator = Paginator(homeworks, 10)
+    paginator = Paginator(homeworks, 3)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     
